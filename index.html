@@ -1,0 +1,41 @@
+<title>von Koch snowflake Generator | Eric & Danny</title>
+<style>
+    #coords{
+    position: fixed !important;
+    top: 17px;
+    right: 10px;
+    display:none
+}
+a {
+    display: none
+}
+</style>
+<canvas id="turtlecanvas" width="700" height="700"></canvas>
+<canvas id="imagecanvas" width="700" height="700" style="display:none"></canvas>
+<script type="text/javascript" src="https://rawgit.com/hanumanum/js-turtle/master/lib/library.js"></script>
+<link rel="stylesheet" href="https://rawgit.com/hanumanum/js-turtle/master/lib/turtle.css">
+
+<script>
+    let d = prompt("Depth (1-5): ");
+
+    function k(n, l) {
+    if (n == 0)
+        forward(l);
+    else {
+        let angles = [60, -120, 60, 0];
+        for (let a of angles) {
+        k(n - 1, l / 3);
+        left(a);
+        }
+    }
+    }
+
+    penup();
+    goto(-100, 50);
+    pendown();
+
+    for (let i = 0; i < 3; i++) {
+    k(parseInt(d), 250);
+    right(120);
+    }
+</script>
